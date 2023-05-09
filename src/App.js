@@ -1,25 +1,49 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+// import components
+import Box from './components/Box';
+import Form from './components/Form';
+
 
 function App() {
+  // Global state
+  // this is where you set the default values for the state
+  const [boxes, setBoxes] = useState([
+    {
+      color: 'Blue'
+    },
+    {
+      color: 'Red'
+    },
+    {
+      color: 'Green'
+    }
+  ])
+  // add new box and update state
+  const addBox = (formInput) => {
+    // console.log("you clicked add box", formInput);
+    setBoxes([...boxes, { color: formInput }]);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <fieldset>
+      {/* <legend>app.js</legend> */}
+      <h1>Boxes 📦</h1>
+      {/* see them as objs */}
+      {/* {
+        JSON.stringify(boxes)
+      } */}
+      <hr />
+      <Form addBox={addBox} />
+      {
+        // iterate over the boxes or any object in the array
+        boxes.map((boxObj, index) => {
+          return (
+            // every obj in the array is a needs a key set that key to index
+            <Box key={index} boxObj={boxObj} />
+          )
+        })
+      }
+    </fieldset >
   );
 }
-
 export default App;

@@ -16,7 +16,7 @@ function App() {
       color: 'Red'
     },
     {
-      color: 'Green'
+      color: 'Purple'
     }
   ])
   // add new box and update state

@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-
-
 const Form = (props) => {
     // uses state to store the value of the input
     const [color, newColor] = useState("")
@@ -11,6 +9,8 @@ const Form = (props) => {
         e.preventDefault()
         // add the color to the state
         props.addBox(color)
+        // set new color to empty string
+        newColor("")
     }
 
     return (
